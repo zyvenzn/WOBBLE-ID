@@ -18,8 +18,8 @@
 
 ## Phase 2 — AI Director
 
-- [ ] Define a versioned video brief format.
-- [ ] Generate structured scenes, narration drafts, and asset lists.
+- [x] Define a versioned video brief format (`docs/BRIEF_FORMAT.md`, `src/brief.js`).
+- [ ] Generate structured scenes, narration drafts, and asset lists (`npm run brief`; code and offline tests are in, still to be verified against the live gateway).
 - [ ] Add human review before production jobs begin.
 
 ## Phase 3 — Voxel asset pipeline

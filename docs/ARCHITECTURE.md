@@ -39,3 +39,12 @@ The first Node.js server exposes only:
 - **Not implemented yet:** retries and request queuing (see Phase 5 in the roadmap).
 - **Billing (observed 2026-11-15):** prompt and completion tokens are billed separately, each as max(actual, 1024) multiplied by the model's multiplier. Prompt counts include roughly 350 tokens that are not part of our messages. Short requests are therefore not cheaper; prefer fewer, richer requests.
 - **Default model:** `deepseek-v4-pro` (cheapest and fastest of the four models tested with the same video-brief prompt).
+
+## AI Director (Phase 2)
+
+- **Brief format:** versioned JSON, defined and validated in `src/brief.js` (pure functions, no network or filesystem). Field reference in `docs/BRIEF_FORMAT.md`.
+- **Director:** `src/director.js` builds the prompt (Director v2.1), makes one `chat()` call and returns the parsed brief with its validation result.
+- **CLI:** `npm run brief -- "topic"` is a dry run; add `--run` to spend tokens. The result is saved to `output/briefs/` (git-ignored) as a `draft` for manual review. A reply without usable JSON is saved as `.raw.txt`.
+- **Validation:** structural problems are errors (the file is marked `invalid` and the command exits with code 1); style problems are warnings for the reviewer. The model is not retried automatically, because every request is billed at least 1024 prompt and 1024 completion tokens.
+- **Word budget:** `max_tokens` is not honoured by the gateway, so the length target (90 to 110 spoken words) is enforced by the prompt and checked by the validator.
+- **Tests:** `npm test` runs the offline tests in `test/` (no network, no tokens).

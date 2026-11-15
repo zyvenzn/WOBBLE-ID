@@ -10,8 +10,10 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "node --watch src/server.js",
-    "check": "node --check src/server.js && node --check src/config.js && node --check src/relink.js && node --check scripts/relink-check.js && node --check scripts/relink-compare.js",
+    "check": "node --check src/server.js && node --check src/config.js && node --check src/relink.js && node --check src/brief.js && node --check src/director.js && node --check scripts/relink-check.js && node --check scripts/relink-compare.js && node --check scripts/brief.js",
+    "test": "node --test",
     "relink:check": "node scripts/relink-check.js",
-    "relink:compare": "node scripts/relink-compare.js"
+    "relink:compare": "node scripts/relink-compare.js",
+    "brief": "node scripts/brief.js"
   }
 }
