@@ -69,4 +69,12 @@ A brief is one JSON object that describes one video. It is produced by the AI Di
 }
 ```
 
-`status` is `draft` when validation passed and `invalid` when it did not. Nothing marks a brief as approved yet; that is the next roadmap item ("human review before production jobs begin").
+`status` is `draft` when validation passed and `invalid` when it did not.
+
+## Human review
+
+1. `npm run brief:show` prints the newest brief (or `-- <file name>` for another one) and validates it again.
+2. Edit the JSON by hand if needed.
+3. `npm run brief:approve -- <file name>` (or `-- --latest`) validates the file once more and, only if it passes, sets `status` to `approved` and adds `approvedAt`. An invalid brief is never approved.
+
+Later phases must only accept briefs whose `status` is `approved`. Both commands are free: no network, no tokens.

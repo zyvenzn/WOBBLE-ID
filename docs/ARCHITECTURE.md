@@ -45,6 +45,7 @@ The first Node.js server exposes only:
 - **Brief format:** versioned JSON, defined and validated in `src/brief.js` (pure functions, no network or filesystem). Field reference in `docs/BRIEF_FORMAT.md`.
 - **Director:** `src/director.js` builds the prompt (Director v2.1), makes one `chat()` call and returns the parsed brief with its validation result.
 - **CLI:** `npm run brief -- "topic"` is a dry run; add `--run` to spend tokens. The result is saved to `output/briefs/` (git-ignored) as a `draft` for manual review. A reply without usable JSON is saved as `.raw.txt`.
+- **Review gate:** `npm run brief:show` prints a saved brief and `npm run brief:approve` marks it `approved` after validating it again (`src/brief-files.js` only touches files inside `output/briefs/`). Later phases accept only approved briefs.
 - **Validation:** structural problems are errors (the file is marked `invalid` and the command exits with code 1); style problems are warnings for the reviewer. The model is not retried automatically, because every request is billed at least 1024 prompt and 1024 completion tokens.
 - **Word budget:** `max_tokens` is not honoured by the gateway, so the length target (90 to 110 spoken words) is enforced by the prompt and checked by the validator.
 - **Tests:** `npm test` runs the offline tests in `test/` (no network, no tokens).
