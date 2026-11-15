@@ -1,7 +1,7 @@
 import { createServer } from "node:http";
+import { config } from "./config.js";
 
-const HOST = process.env.HOST || "127.0.0.1";
-const PORT = Number.parseInt(process.env.PORT || "8787", 10);
+const { host: HOST, port: PORT } = config;
 
 if (!Number.isInteger(PORT) || PORT < 1 || PORT > 65535) {
   throw new Error("PORT must be a valid TCP port between 1 and 65535.");

@@ -1,24 +1,24 @@
-WOBBLE ID
+# WOBBLE ID
 
-AI-Powered Cinematic Voxel Animation Production System
+**AI-Powered Cinematic Voxel Animation Production System**
 
 WOBBLE ID is an AI-assisted production platform designed to create cinematic voxel animations through an integrated workflow combining artificial intelligence, 3D asset creation, animation, and video rendering.
 
-Vision
+## Vision
 
 Make cinematic voxel animation production easier through intelligent automation and modular creative tools.
 
-Core Technologies
+## Core Technologies
 
-- Runtime: Node.js
-- Development Environment: Android Termux
-- 3D Creation: Blender
-- 3D Asset Format: GLB / glTF
-- AI Provider: Re:Link Gateway
-- Audio Generation: ElevenLabs
-- Video Processing: FFmpeg
+- **Runtime:** Node.js (>= 20.12)
+- **Development environment:** Android Termux
+- **3D creation:** Blender
+- **3D asset format:** GLB / glTF
+- **AI provider:** Re:Link Gateway (OpenAI-compatible API)
+- **Audio generation:** ElevenLabs
+- **Video processing:** FFmpeg
 
-Core Modules
+## Core Modules
 
 - AI Director
 - Voxel Asset Designer
@@ -26,7 +26,7 @@ Core Modules
 - Video Producer
 - Technical Engineer
 
-Production Workflow
+## Production Workflow
 
 1. Generate a video concept and storyboard.
 2. Design voxel characters and environments.
@@ -35,7 +35,7 @@ Production Workflow
 5. Generate narration and audio.
 6. Render and assemble the final video.
 
-Architecture
+## Architecture
 
 WOBBLE ID uses a hybrid architecture:
 
@@ -44,16 +44,23 @@ WOBBLE ID uses a hybrid architecture:
 - Blender handles 3D asset creation and animation.
 - External rendering workers handle computationally intensive tasks.
 
-Development Status
+See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) and [docs/ROADMAP.md](docs/ROADMAP.md) for details.
 
-Current Stage: Foundation Setup
+## Quick Start
 
-This project is under active development.
+```bash
+cp .env.example .env        # then fill in RELINK_API_KEY
+npm run relink:check        # list active models (spends no tokens)
+npm run relink:check -- --chat   # optional: one tiny chat request
+npm start                   # health check at http://127.0.0.1:8787/health
+```
 
-Repository
+Never commit `.env` or real API keys.
 
-"GitHub - zyvenzn/WOBBLE-ID" (https://github.com/zyvenzn/WOBBLE-ID)
+## Development Status
+
+Current stage: **Foundation Setup**. This project is under active development.
 
 ---
 
-Built for creative automation. Powered by AI. Designed for cinematic voxel storytelling.
+*Built for creative automation. Powered by AI. Designed for cinematic voxel storytelling.*
