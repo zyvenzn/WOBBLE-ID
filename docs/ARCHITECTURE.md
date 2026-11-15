@@ -37,3 +37,5 @@ The first Node.js server exposes only:
 - **Token accounting:** the dashboard may count more tokens than the `usage` field of a response (observed on a single small request). Compare both before budgeting the quota.
 - **Scope:** the gateway supplies language-model access only; it does not create Blender assets or render videos.
 - **Not implemented yet:** retries and request queuing (see Phase 5 in the roadmap).
+- **Billing (observed 2026-11-15):** prompt and completion tokens are billed separately, each as max(actual, 1024) multiplied by the model's multiplier. Prompt counts include roughly 350 tokens that are not part of our messages. Short requests are therefore not cheaper; prefer fewer, richer requests.
+- **Default model:** `deepseek-v4-pro` (cheapest and fastest of the four models tested with the same video-brief prompt).

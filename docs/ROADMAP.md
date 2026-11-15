@@ -13,8 +13,8 @@
 - [x] Add a provider adapter with timeout and error handling.
 - [x] Keep credentials outside Git.
 - [x] Run `npm run relink:check -- --chat` in Termux and verify the adapter end to end.
-- [ ] Compare the dashboard's token usage with the `usage` field in responses before budgeting the quota.
-- [ ] Choose the default model for the AI Director by testing several active models with the same prompt.
+- [x] Compare the dashboard's token usage with the `usage` field in responses before budgeting the quota.
+- [x] Choose the default model for the AI Director by testing several active models with the same prompt.
 
 ## Phase 2 — AI Director
 
