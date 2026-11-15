@@ -5,14 +5,14 @@
 - [x] Initialize repository documentation.
 - [x] Add Node.js project metadata.
 - [x] Add a minimal health-check endpoint.
-- [ ] Run the server locally in Termux and verify `GET /health`.
+- [x] Run the server locally in Termux and verify `GET /health`.
 
 ## Phase 1 — AI provider connection
 
 - [x] Confirm Re:Link base URL, authentication format, and model IDs (OpenAI-compatible, Bearer token; verified with `GET /models` and `POST /chat/completions`).
 - [x] Add a provider adapter with timeout and error handling.
 - [x] Keep credentials outside Git.
-- [ ] Run `npm run relink:check -- --chat` in Termux and verify the adapter end to end.
+- [x] Run `npm run relink:check -- --chat` in Termux and verify the adapter end to end.
 - [ ] Compare the dashboard's token usage with the `usage` field in responses before budgeting the quota.
 - [ ] Choose the default model for the AI Director by testing several active models with the same prompt.
 
