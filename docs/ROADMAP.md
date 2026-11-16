@@ -26,7 +26,8 @@
 
 - [x] Define asset naming and folder conventions (`docs/ASSET_STANDARDS.md`, v1 proposed; confirm with the first real asset).
 - [x] Define Blender scene, scale, origin, and material standards (`docs/ASSET_STANDARDS.md`, v1 proposed; confirm with the first real asset).
-- [ ] Export and validate GLB/glTF assets.
+- [x] Export and validate GLB/glTF assets (`npm run asset:check` with offline tests; `scripts/blender/export_asset.py` is written but still to be run against real Blender).
+- [ ] Model the first real asset (`wobble_character`) and confirm or adjust the proposed values in `docs/ASSET_STANDARDS.md`.
 
 ## Phase 4 — Animation and media
 

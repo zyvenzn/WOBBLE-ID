@@ -18,7 +18,8 @@ export const LIMITS = Object.freeze({
   maxAssetsPerScene: 4
 });
 
-const ASSET_ID = /^[a-z0-9]+(?:_[a-z0-9]+)*$/;
+// Shared with src/asset.js: asset ids in a brief are the same ids used for asset folders.
+export const ASSET_ID = /^[a-z0-9]+(?:_[a-z0-9]+)*$/;
 // Props or clothing that are not part of Wobble's fixed design.
 const OFF_MODEL_ITEM =
   /\b(kacamata|topi|helm|jubah|jas|jaket|syal|masker|ransel|sarung tangan|sepatu bot)\b/i;

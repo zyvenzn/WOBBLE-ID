@@ -53,13 +53,18 @@ cp .env.example .env        # then fill in RELINK_API_KEY
 npm run relink:check        # list active models (spends no tokens)
 npm run relink:check -- --chat   # optional: one tiny chat request
 npm start                   # health check at http://127.0.0.1:8787/health
+npm test                    # offline tests (no network, no tokens)
+npm run asset:check -- --all     # check voxel assets against docs/ASSET_STANDARDS.md
+npm run asset:check -- --brief   # which assets the newest brief can use / still needs
 ```
+
+The AI Director commands (`npm run brief`, `brief:show`, `brief:approve`) are described in [docs/BRIEF_FORMAT.md](docs/BRIEF_FORMAT.md) and [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
 Never commit `.env` or real API keys.
 
 ## Development Status
 
-Current stage: **Foundation Setup**. This project is under active development.
+Current stage: **Phase 3 — Voxel asset pipeline** (standards and checker done; first real asset next). See [docs/ROADMAP.md](docs/ROADMAP.md). This project is under active development.
 
 ---
 
