@@ -24,8 +24,8 @@
 
 ## Phase 3 — Voxel asset pipeline
 
-- [ ] Define asset naming and folder conventions.
-- [ ] Define Blender scene, scale, origin, and material standards.
+- [x] Define asset naming and folder conventions (`docs/ASSET_STANDARDS.md`, v1 proposed; confirm with the first real asset).
+- [x] Define Blender scene, scale, origin, and material standards (`docs/ASSET_STANDARDS.md`, v1 proposed; confirm with the first real asset).
 - [ ] Export and validate GLB/glTF assets.
 
 ## Phase 4 — Animation and media

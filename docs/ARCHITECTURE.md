@@ -49,3 +49,9 @@ The first Node.js server exposes only:
 - **Validation:** structural problems are errors (the file is marked `invalid` and the command exits with code 1); style problems are warnings for the reviewer. The model is not retried automatically, because every request is billed at least 1024 prompt and 1024 completion tokens.
 - **Word budget:** `max_tokens` is not honoured by the gateway, so the length target (90 to 110 spoken words) is enforced by the prompt and checked by the validator.
 - **Tests:** `npm test` runs the offline tests in `test/` (no network, no tokens).
+
+## Voxel asset pipeline (Phase 3)
+
+- **Standards:** naming, folders, scale, origin, orientation, and materials are defined in `docs/ASSET_STANDARDS.md`.
+- **Link to briefs:** the asset ids in a brief use the same `snake_case` rule (`ASSET_ID` in `src/brief.js`) and are the keys of the asset folders under `assets/`.
+- **Not implemented yet:** GLB export and automatic validation (Phase 3, item 3).
