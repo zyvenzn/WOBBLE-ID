@@ -150,10 +150,50 @@ Because ids are unique across categories, the lookup never needs the category fr
 - [ ] Triangle count within budget.
 - [ ] Metadata file filled in and matching the model.
 
+## 10. Exporting and checking
+
+**Export** (inside Blender, from the project root):
+
+```
+blender -b path/to/<asset_id>.blend --python scripts/blender/export_asset.py -- <asset_id>
+```
+
+The script exports the root empty and its children to `assets/<category>/<asset_id>/<asset_id>.glb` with Y-up, no image textures, and no cameras, lights or animation. The asset folder must already exist. The script has **not been run against real Blender yet**; expect to fix an option name on the first run.
+
+**Check** (plain Node.js, free, no network):
+
+```
+npm run asset:check -- <asset_id>      one asset
+npm run asset:check -- --all           every asset in assets/
+npm run asset:check -- --brief [file]  which assets a brief can use, and which are still to build
+```
+
+An asset with errors makes the command exit with code 1. Warnings are for the reviewer and do not fail the run.
+
+| Rule | Result |
+| --- | --- |
+| Metadata id, category, status, voxel size, origin rule, bounds | error |
+| GLB is missing | warning while `draft`, error otherwise |
+| Exactly one root node named `<asset_id>`, at the world origin | error |
+| Default Blender names (`Cube.001`); missing names | error |
+| Child names not of the form `<asset_id>_<part>` | warning |
+| Scale not 1 (also negative), rotation not zero, matrix on a node | error |
+| Material name not starting with `mat_`; more than 8 materials | error |
+| Image textures that the metadata does not list | error |
+| Metallic factor above 0 or unset; material not used by any mesh | warning |
+| Triangles over the category budget; points or lines instead of triangles | error |
+| Compressed geometry (Draco, meshopt) | error |
+| Lowest point not at y = 0 or not centered over the origin (`bottom-center`) | error |
+| Center not near the origin (`center`) | warning |
+| Vertices off the 0.1 m grid | warning |
+| Metadata triangles, bounds or materials differ from the GLB | warning |
+
+Not checked automatically: which way the front faces (±Z), palette colors, and that the asset looks right. Those stay with the human review before `status` becomes `approved`.
+
 ## Open decisions
 
 1. **Where binaries live.** `.blend` and `.glb` files are large and development happens on Android Termux with limited storage. Proposed: keep them out of Git for now and share through the render worker's storage; revisit Git LFS when a worker exists (Phase 5). Metadata and previews stay in Git.
 2. **Voxel size.** 0.1 m with a 1.6 m Wobble is a guess. A smaller voxel gives a finer look but raises the triangle count.
 3. **Crown color** and the exact hex values of the palette.
 4. **Neutral pose:** T-pose or A-pose.
-5. **Validator.** Phase 3 item 3 will turn section 9 into an automatic check (`npm run asset:check`).
+5. **Front direction and palette** are not checked by `asset:check` yet. A palette check needs `assets/palette.json`, which does not exist until the first asset is modelled.

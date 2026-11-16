@@ -54,4 +54,7 @@ The first Node.js server exposes only:
 
 - **Standards:** naming, folders, scale, origin, orientation, and materials are defined in `docs/ASSET_STANDARDS.md`.
 - **Link to briefs:** the asset ids in a brief use the same `snake_case` rule (`ASSET_ID` in `src/brief.js`) and are the keys of the asset folders under `assets/`.
-- **Not implemented yet:** GLB export and automatic validation (Phase 3, item 3).
+- **Validation:** `src/asset.js` (pure functions: metadata check, GLB parser, GLB content check against the standards) and `src/asset-files.js` (finding asset folders, reading files, coverage of a brief's asset ids). The GLB is parsed directly, with no dependencies.
+- **CLI:** `npm run asset:check -- <asset_id> | --all | --brief [file]`. Errors give exit code 1.
+- **Export:** `scripts/blender/export_asset.py` runs inside Blender (`blender -b file.blend --python ... -- <asset_id>`). It has not been run against real Blender yet.
+- **Not implemented yet:** palette check, front-direction check, and asset lookup inside the production pipeline (Phase 4).
